@@ -18,7 +18,7 @@ Learn how to set up a Python project in VS Code, including configuring a virtual
    - Search for `Python` (published by Microsoft) and install it.
 
 3. **Create a Python virtual environment:**
-   - Open the integrated terminal (`Ctrl+` or `Cmd+`).
+   - Open the integrated terminal (`Ctrl+ù`).
    - Run the following command:
      ```bash
      python -m venv venv
@@ -28,10 +28,7 @@ Learn how to set up a Python project in VS Code, including configuring a virtual
        ```bash
        .\venv\Scripts\activate
        ```
-     - **Mac/Linux:**
-       ```bash
-       source venv/bin/activate
-       ```
+or use VS Code command to do so
 
 4. **Select the Python interpreter:**
    - Press `Ctrl+Shift+P` to open the Command Palette.
@@ -100,24 +97,4 @@ Learn how to set up a Python project in VS Code, including configuring a virtual
      ```
    - Verify all tests pass.
 
----
-
-## Expected Deliverables
-
-1. A functional Python program (`main.py`) with a `greet` function.
-2. Debugging results with breakpoints.
-3. A passing test suite using `pytest`.
-
----
-
-## Wrap-Up
-
-- Discuss common errors encountered during the lab and their solutions.
-- Explore additional features in VS Code, such as linting with Pylint or auto-formatting with Black.
-
----
-
-## Notes
-
-For further details or troubleshooting, refer to the [VS Code Python documentation](https://code.visualstudio.com/docs/languages/python).
-
+### Now, use VS code tools for testing your python code
