@@ -1,5 +1,7 @@
 # Lab: Python Development with VS Code
 
+# Part 01
+
 ## Objective
 Learn how to set up a Python project in VS Code, including configuring a virtual environment, writing and debugging code, and adding tests.
 
@@ -98,3 +100,77 @@ or use VS Code command to do so
    - Verify all tests pass.
 
 ### Now, use VS code tools for testing your python code
+
+# PART 02
+
+## 1. Fixing a Buggy Factorial Function
+
+### Step 1: Write the Function (Buggy Code)
+
+Create a file **`factorial.py`**:
+
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n - 1) + 1  
+```
+
+- This function should calculate the factorial of n.
+- However, there’s a mistake that will cause incorrect results!
+
+### Step 2: Write a Test and Find the Bug
+
+Create a file test_factorial.py:
+
+```python
+from factorial import factorial
+
+def test_factorial():
+    assert factorial(0) == 1
+    assert factorial(1) == 1
+    assert factorial(5) == 120  # This will fail
+```
+
+- Execute the test
+- You will see an AssertionError, meaning the function is incorrect.
+
+### Step 3: Debug and Fix the Function and Test Again to Confirm the Fix
+
+- Modify factorial.py to remove the bug
+- Execute the test again, now, all tests should pass!
+
+## 2. Fixing a Buggy Prime Number Function
+
+Create prime.py
+
+```python
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, 2*n): 
+        if n % i == 0:
+            return False
+    return True
+```
+
+Create test_prime.py:
+
+```python
+from prime import is_prime
+
+def test_is_prime():
+    assert is_prime(2) == True
+    assert is_prime(3) == True
+    assert is_prime(4) == False
+    assert is_prime(29) == True
+```
+**Debug and Fix the Function**
+
+# PART 3
+
+- Write a function that sums positive numbers in a list.
+- If negative numbers are present, the function should raise an exception.
+- Test for different edge cases.
+- Debug and fix errors if the function fails.
+
