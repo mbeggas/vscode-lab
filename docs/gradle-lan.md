@@ -48,7 +48,7 @@
   ```
 
 ### **Step 4: Compiling and Running the Application**
-- Modify src/main/java/App.java`:
+- Modify `src/main/java/App.java`:
   ```java
 public class App {
     public static void main(String[] args) {
