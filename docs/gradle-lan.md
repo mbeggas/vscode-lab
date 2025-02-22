@@ -62,7 +62,7 @@ public class App {
     }
 }
 ```
-
+Create a new file `src/main/java/Calculator.java`:
 ```java
 public class Calculator {
     public int add(int a, int b) {
