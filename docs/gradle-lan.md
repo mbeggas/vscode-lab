@@ -36,20 +36,20 @@
 
 ### **Step 3: Configuring Dependencies**
 - Open `build.gradle` and add dependencies:
-  ```gradle
+```gradle
   dependencies {
       implementation 'org.apache.commons:commons-lang3:3.12.0'
        testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
   }
-  ```
+```
 - Run:
-  ```sh
+```sh
   gradle dependencies
-  ```
+```
 
 ### **Step 4: Compiling and Running the Application**
 - Modify `src/main/java/App.java`:
-  ```java
+```java
 public class App {
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
@@ -61,7 +61,7 @@ public class App {
         System.out.println("Product: " + product);
     }
 }
-  ```
+```
 
 ```java
 public class Calculator {
