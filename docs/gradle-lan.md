@@ -122,4 +122,4 @@ public class CalculatorTest {
 - Modify the `Calculator` class to include a `subtract` and `divide` method.
 - Add corresponding test cases in `CalculatorTest.java`.
 - Explore how Gradle can run a specific test case instead of the entire test suite.
-- Add a method that reverse a string using `StringUtils` from the package `org.apache.commons:commons-lang3`
+- Add a method that reverses a string using `StringUtils` from the package `org.apache.commons:commons-lang3` and test it.
