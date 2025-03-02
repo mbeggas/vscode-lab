@@ -432,6 +432,354 @@ Processing credit card payment of $100.0
 Processing PayPal payment of $50.0
 Processing Bitcoin payment of $200.0
 ```
+
+### Eliminating Duplicate Code 
+
+#### 1. Extract Method
+
+One of the most common ways to eliminate duplicate code is to extract the repeated logic into a separate method.
+
+**Before Refactoring**
+
+```java
+public class OrderProcessor {
+    public void processOrder(Order order) {
+        // Validate order
+        if (order.getItems().isEmpty()) {
+            throw new IllegalArgumentException("Order must have at least one item");
+        }
+        if (order.getCustomer() == null) {
+            throw new IllegalArgumentException("Order must have a customer");
+        }
+
+        // Process order
+        System.out.println("Processing order for customer: " + order.getCustomer().getName());
+
+        // Validate payment
+        if (order.getPayment() == null) {
+            throw new IllegalArgumentException("Order must have a payment method");
+        }
+        if (order.getPayment().getAmount() <= 0) {
+            throw new IllegalArgumentException("Payment amount must be greater than 0");
+        }
+
+        // Process payment
+        System.out.println("Processing payment of $" + order.getPayment().getAmount());
+    }
+
+    public void processRefund(Order order) {
+        // Validate order
+        if (order.getItems().isEmpty()) {
+            throw new IllegalArgumentException("Order must have at least one item");
+        }
+        if (order.getCustomer() == null) {
+            throw new IllegalArgumentException("Order must have a customer");
+        }
+
+        // Process refund
+        System.out.println("Processing refund for customer: " + order.getCustomer().getName());
+
+        // Validate payment
+        if (order.getPayment() == null) {
+            throw new IllegalArgumentException("Order must have a payment method");
+        }
+        if (order.getPayment().getAmount() <= 0) {
+            throw new IllegalArgumentException("Payment amount must be greater than 0");
+        }
+
+        // Process refund payment
+        System.out.println("Refunding payment of $" + order.getPayment().getAmount());
+    }
+}
+```
+
+**Problem**
+The validation logic for order and payment is duplicated in both processOrder and processRefund.
+
+**After Refactoring (Extract Method)**
+
+```java
+public class OrderProcessor {
+    public void processOrder(Order order) {
+        validateOrder(order);
+        System.out.println("Processing order for customer: " + order.getCustomer().getName());
+
+        validatePayment(order.getPayment());
+        System.out.println("Processing payment of $" + order.getPayment().getAmount());
+    }
+
+    public void processRefund(Order order) {
+        validateOrder(order);
+        System.out.println("Processing refund for customer: " + order.getCustomer().getName());
+
+        validatePayment(order.getPayment());
+        System.out.println("Refunding payment of $" + order.getPayment().getAmount());
+    }
+
+    private void validateOrder(Order order) {
+        if (order.getItems().isEmpty()) {
+            throw new IllegalArgumentException("Order must have at least one item");
+        }
+        if (order.getCustomer() == null) {
+            throw new IllegalArgumentException("Order must have a customer");
+        }
+    }
+
+    private void validatePayment(Payment payment) {
+        if (payment == null) {
+            throw new IllegalArgumentException("Order must have a payment method");
+        }
+        if (payment.getAmount() <= 0) {
+            throw new IllegalArgumentException("Payment amount must be greater than 0");
+        }
+    }
+}
+```
+
+**Benefits**
+- Eliminates duplicate validation logic.
+- Improves readability and maintainability.
+- Makes it easier to update validation rules in one place.
+
+#### 2. Use Inheritance
+
+If duplicate code exists across multiple classes, you can use inheritance to share common behavior.
+
+**Before Refactoring**
+
+```java
+class Dog {
+    public void eat() {
+        System.out.println("Dog is eating");
+    }
+
+    public void sleep() {
+        System.out.println("Dog is sleeping");
+    }
+}
+
+class Cat {
+    public void eat() {
+        System.out.println("Cat is eating");
+    }
+
+    public void sleep() {
+        System.out.println("Cat is sleeping");
+    }
+}
+```
+
+**Problem**
+
+The eat and sleep methods are duplicated in both Dog and Cat classes.
+
+**After Refactoring (Using Inheritance)**
+
+```java
+abstract class Animal {
+    public void eat() {
+        System.out.println(getClass().getSimpleName() + " is eating");
+    }
+
+    public void sleep() {
+        System.out.println(getClass().getSimpleName() + " is sleeping");
+    }
+}
+
+class Dog extends Animal {}
+
+class Cat extends Animal {}
+```
+
+**Benefits**
+
+- Eliminates duplicate code by moving common behavior to a base class.
+- Makes it easier to add new animal types in the future.
+
+#### 3. Using Utility Classes
+
+For reusable logic that doesn’t belong to a specific class, you can create a utility class.
+
+**Before Refactoring**
+
+```java
+class OrderProcessor {
+    public double calculateTotal(Order order) {
+        double total = 0;
+        for (Item item : order.getItems()) {
+            total += item.getPrice() * item.getQuantity();
+        }
+        return total;
+    }
+}
+
+class InvoiceGenerator {
+    public double calculateTotal(Order order) {
+        double total = 0;
+        for (Item item : order.getItems()) {
+            total += item.getPrice() * item.getQuantity();
+        }
+        return total;
+    }
+}
+```
+
+**Problem**
+
+The calculateTotal method is duplicated in both OrderProcessor and InvoiceGenerator.
+
+**After Refactoring (Using Utility Class)**
+
+```java
+class OrderUtils {
+    public static double calculateTotal(Order order) {
+        double total = 0;
+        for (Item item : order.getItems()) {
+            total += item.getPrice() * item.getQuantity();
+        }
+        return total;
+    }
+}
+
+class OrderProcessor {
+    public double calculateTotal(Order order) {
+        return OrderUtils.calculateTotal(order);
+    }
+}
+
+class InvoiceGenerator {
+    public double calculateTotal(Order order) {
+        return OrderUtils.calculateTotal(order);
+    }
+}
+```
+
+**Benefits**
+
+- Eliminates duplicate logic by centralizing it in a utility class.
+- Improves reusability and maintainability.
+
+#### 4. Using Composition
+
+Imagine you have a system with two classes: OrderCalculator and DiscountCalculator. Both classes perform similar calculations, such as calculating totals and applying taxes. The calculation logic is duplicated across both classes.
+
+**Before Refactoring**
+
+```java
+class OrderCalculator {
+    public double calculateTotal(double subtotal, double taxRate) {
+        double tax = subtotal * taxRate;
+        return subtotal + tax;
+    }
+
+    public double applyDiscount(double total, double discountRate) {
+        return total * (1 - discountRate);
+    }
+}
+
+class DiscountCalculator {
+    public double calculateTotal(double subtotal, double taxRate) {
+        double tax = subtotal * taxRate;
+        return subtotal + tax;
+    }
+
+    public double applyDiscount(double total, double discountRate) {
+        return total * (1 - discountRate);
+    }
+}
+```
+
+**Problem**
+
+- The calculateTotal and applyDiscount methods are duplicated in both OrderCalculator and DiscountCalculator.
+- If the calculation logic changes, you’ll need to update it in multiple places.
+
+**After Refactoring (Using Composition)**
+
+**Step 1:** Create a Shared Calculation Component. Create a new class, CalculationService, to encapsulate the shared calculation logic.
+
+```java
+class CalculationService {
+    public double calculateTotal(double subtotal, double taxRate) {
+        double tax = subtotal * taxRate;
+        return subtotal + tax;
+    }
+
+    public double applyDiscount(double total, double discountRate) {
+        return total * (1 - discountRate);
+    }
+}
+```
+
+**Step 2:** Compose Classes with the Shared Component. Include an instance of CalculationService in the classes that need it.
+
+```java
+class OrderCalculator {
+    private final CalculationService calculationService;
+
+    public OrderCalculator(CalculationService calculationService) {
+        this.calculationService = calculationService;
+    }
+
+    public double calculateOrderTotal(double subtotal, double taxRate) {
+        return calculationService.calculateTotal(subtotal, taxRate);
+    }
+
+    public double applyOrderDiscount(double total, double discountRate) {
+        return calculationService.applyDiscount(total, discountRate);
+    }
+}
+
+class DiscountCalculator {
+    private final CalculationService calculationService;
+
+    public DiscountCalculator(CalculationService calculationService) {
+        this.calculationService = calculationService;
+    }
+
+    public double calculateDiscountedTotal(double subtotal, double taxRate, double discountRate) {
+        double total = calculationService.calculateTotal(subtotal, taxRate);
+        return calculationService.applyDiscount(total, discountRate);
+    }
+}
+```
+
+Example usage
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Create the shared calculation service
+        CalculationService calculationService = new CalculationService();
+
+        // Create calculators with the shared service
+        OrderCalculator orderCalculator = new OrderCalculator(calculationService);
+        DiscountCalculator discountCalculator = new DiscountCalculator(calculationService);
+
+        // Use the calculators
+        double orderTotal = orderCalculator.calculateOrderTotal(100.0, 0.1); // 10% tax
+        System.out.println("Order Total: " + orderTotal);
+
+        double discountedTotal = discountCalculator.calculateDiscountedTotal(100.0, 0.1, 0.2); // 10% tax, 20% discount
+        System.out.println("Discounted Total: " + discountedTotal);
+    }
+}
+```
+
+Output
+
+```sh
+Order Total: 110.0
+Discounted Total: 88.0
+```
+
+**Benefits of Using Composition**
+
+- Eliminates Duplicate Code: The calculation logic is centralized in the CalculationService class.
+- Flexibility: You can easily change the calculation logic by modifying the CalculationService class.
+- Reusability: The CalculationService class can be reused across multiple classes.
+- Testability: You can mock the CalculationService class for unit testing.
+
 ---
 
 ## 4. Common Refactoring Techniques
@@ -450,10 +798,6 @@ Processing Bitcoin payment of $200.0
 - **Introduce Design Patterns**:
   - Apply patterns like Factory, Singleton, or Observer where applicable.
 
-### Eliminating Duplicate Code
-
-#### 1. Extract Method
-One of the most common ways to eliminate duplicate code is to extract the repeated logic into a separate method.
 
 
 
