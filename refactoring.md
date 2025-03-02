@@ -37,6 +37,8 @@
 - **When Fixing Bugs**:
   - Improve the code to prevent similar issues in the future.
 
+## 4. Common Refactoring Techniques (with examples)
+
 ### Rename Variables/Methods Refactoring Example in Java
 
 **Before refactoring**
@@ -229,8 +231,207 @@ public class OrderProcessor {
 - When you notice duplicated code that can be reused.
 - When you want to improve readability and maintainability.
 
+### Replace Nested Conditional with Polymorphism
 
+Refactoring by grouping related parameters into an object.
 
+**Before refactoring**
+
+```java
+public class Employee {
+    public double calculateBonus(String type) {
+        if (type.equals("Manager")) {
+            return 5000;
+        } else if (type.equals("Developer")) {
+            return 3000;
+        } else {
+            return 1000;
+        }
+    }
+}
+}
+
+```
+
+**Problems with the Original Code**
+- Complex Conditional Logic: The getSound method uses nested conditionals to determine the sound based on the bird type.
+- Low Extensibility: Adding a new bird type requires modifying the getSound method, violating the Open/Closed Principle.
+- Poor Readability: The code is harder to read and maintain as the number of bird types grows.
+
+**After Refactoring (Using Polymorphism)**
+
+```java
+abstract class Employee {
+    abstract double calculateBonus();
+}
+
+class Manager extends Employee {
+    double calculateBonus() { return 5000; }
+}
+
+class Developer extends Employee {
+    double calculateBonus() { return 3000; }
+}
+
+class Intern extends Employee {
+    double calculateBonus() { return 1000; }
+}
+
+```
+
+### Simplify Conditionals using Guard Clauses
+
+Guard clauses are used to handle exceptional cases early in a method, reducing the need for nested conditionals.
+
+**Before Refactoring**
+```java
+public double calculateDiscount(Order order) {
+    double discount = 0.0;
+    if (order.getTotalAmount() > 100) {
+        if (order.getCustomer().isPremium()) {
+            discount = 0.2; // 20% discount for premium customers
+        } else {
+            discount = 0.1; // 10% discount for regular customers
+        }
+    }
+    return discount;
+}
+```
+
+**After Refactoring (Using Guard Clauses)**
+
+```java
+public double calculateDiscount(Order order) {
+    if (order.getTotalAmount() <= 100) {
+        return 0.0; // Early return for orders below $100
+    }
+
+    if (order.getCustomer().isPremium()) {
+        return 0.2; // 20% discount for premium customers
+    }
+
+    return 0.1; // 10% discount for regular customers
+}
+```
+
+**Benefits**
+- Reduces nesting and improves readability.
+- Makes the code flow more linear and easier to follow.
+
+###  Simplify Conditionals using Strategy Pattern
+
+The strategy pattern encapsulates algorithms or behaviors into separate classes, allowing them to be interchangeable.
+
+**Before Refactoring**
+
+```java
+public class PaymentProcessor {
+    public void processPayment(String paymentMethod, double amount) {
+        if (paymentMethod.equals("CreditCard")) {
+            System.out.println("Processing credit card payment of $" + amount);
+        } else if (paymentMethod.equals("PayPal")) {
+            System.out.println("Processing PayPal payment of $" + amount);
+        } else if (paymentMethod.equals("Bitcoin")) {
+            System.out.println("Processing Bitcoin payment of $" + amount);
+        } else {
+            throw new IllegalArgumentException("Unknown payment method");
+        }
+    }
+}
+```
+
+**After Refactoring (Using Strategy Pattern)**
+```java
+// Strategy interface
+interface PaymentStrategy {
+    void pay(double amount);
+}
+
+// Concrete strategies
+class CreditCardPayment implements PaymentStrategy {
+    @Override
+    public void pay(double amount) {
+        System.out.println("Processing credit card payment of $" + amount);
+    }
+}
+
+class PayPalPayment implements PaymentStrategy {
+    @Override
+    public void pay(double amount) {
+        System.out.println("Processing PayPal payment of $" + amount);
+    }
+}
+
+class BitcoinPayment implements PaymentStrategy {
+    @Override
+    public void pay(double amount) {
+        System.out.println("Processing Bitcoin payment of $" + amount);
+    }
+}
+
+// Context class
+class PaymentProcessor {
+    private PaymentStrategy paymentStrategy;
+
+    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
+    }
+
+    public void processPayment(double amount) {
+        paymentStrategy.pay(amount);
+    }
+}
+```
+
+Example usage
+
+```java
+// Strategy interface
+interface PaymentStrategy {
+    void pay(double amount);
+}
+
+// Concrete strategies
+class CreditCardPayment implements PaymentStrategy {
+    @Override
+    public void pay(double amount) {
+        System.out.println("Processing credit card payment of $" + amount);
+    }
+}
+
+class PayPalPayment implements PaymentStrategy {
+    @Override
+    public void pay(double amount) {
+        System.out.println("Processing PayPal payment of $" + amount);
+    }
+}
+
+class BitcoinPayment implements PaymentStrategy {
+    @Override
+    public void pay(double amount) {
+        System.out.println("Processing Bitcoin payment of $" + amount);
+    }
+}
+
+// Context class
+class PaymentProcessor {
+    private PaymentStrategy paymentStrategy;
+
+    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
+    }
+
+    public void processPayment(double amount) {
+        paymentStrategy.pay(amount);
+    }
+}
+```
+Output
+```sh
+Processing credit card payment of $100.0
+Processing PayPal payment of $50.0
+Processing Bitcoin payment of $200.0
+```
 ---
 
 ## 4. Common Refactoring Techniques
@@ -248,6 +449,14 @@ public class OrderProcessor {
   - Relocate methods or fields to more appropriate classes.
 - **Introduce Design Patterns**:
   - Apply patterns like Factory, Singleton, or Observer where applicable.
+
+### Eliminating Duplicate Code
+
+#### 1. Extract Method
+One of the most common ways to eliminate duplicate code is to extract the repeated logic into a separate method.
+
+
+
 
 ---
 
