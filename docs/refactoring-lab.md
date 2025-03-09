@@ -5,7 +5,7 @@
 * Write and run the necessary tests, ensuring that all tests pass.
 * Refactor the code using VS Code’s refactoring features.
 * Rerun the tests after refactoring to validate that the refactoring did not change the code’s behavior.
-* For more details, see the lecture notes on the refactoring course [refactoring course lecture notes](vscode-lab/refactoring.md).
+* For more details, see the lecture notes on the refactoring course [refactoring course lecture notes](../vscode-lab/refactoring.md).
 ### 1. Rename Variables/Methods Refactoring Example in Java
 
 **Before refactoring**
