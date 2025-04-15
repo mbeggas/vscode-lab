@@ -76,10 +76,11 @@ public class Calculator {
 ```
 Create a new file `src/main/java/Calculator.java`:
 - Compile and run:
-  ```sh
+  
+```sh
   gradle build
   gradle run
-  ```
+```
 
 ### **Step 5: Writing and Running Tests**
 - Modify `src/test/java/CalculatorTest.java`:
@@ -102,11 +103,12 @@ public class CalculatorTest {
         assertEquals(0, calculator.multiply(0, 5));
     }
 }
-  ```
+
 - Run tests:
-  ```sh
+
+```sh
   gradle test
-  ```
+```
 
 ### **Step 6: Packaging the Application**
 - Build a JAR file:
