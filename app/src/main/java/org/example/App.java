@@ -4,13 +4,11 @@
 package org.example;
 
 public class App {
-    public static void main(String[] args) {
-        Calculator calculator = new Calculator();
-        int sum = calculator.add(10, 5);
-        int product = calculator.multiply(10, 5);
+    public String getGreeting() {
+        return "Hello World!";
+    }
 
-        System.out.println("Sum: " + sum);
-        System.out.println("Product: " + product);
+    public static void main(String[] args) {
+        System.out.println(new App().getGreeting());
     }
 }
-
