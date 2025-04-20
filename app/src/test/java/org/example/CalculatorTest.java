@@ -8,7 +8,7 @@ public class CalculatorTest {
 
     @Test
     public void testCalc() {
-        double result = calculator.calc(10, 2);  // (10+2)/(10*2) = 12/20 = 0.6
+        double result = calculator.calculateSumDividedByProduct(10, 2);  // (10+2)/(10*2) = 12/20 = 0.6
         assertEquals(0.6, result, 0.0001);
     }
 }
