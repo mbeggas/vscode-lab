@@ -1,14 +1,19 @@
 package com.example;
 
-class Customer {
+public class Customer {
     private String name;
-    private boolean isMember;
+    private boolean member;
+
+    public Customer(String name, boolean isMember) {
+        this.name = name;
+        this.member = isMember;
+    }
 
     public String getName() {
         return name;
     }
 
     public boolean isMember() {
-        return isMember;
+        return member;
     }
 }
