@@ -1,6 +1,4 @@
 package org.example;
-
-
 public class Item {
     private String name;
     private double price;
@@ -24,3 +22,4 @@ public class Item {
         return quantity;
     }
 }
+

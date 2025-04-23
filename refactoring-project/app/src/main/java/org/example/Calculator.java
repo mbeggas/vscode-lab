@@ -1,13 +1,13 @@
 package org.example;
 
 public class Calculator{
-    public double calc(double a, double b) {
-        double x = a + b;
-        double y = a * b;
-        return x / y;
+    public double calculate(double num1, double num2) {
+        double sum = num1 + num2;
+        double product = num1 * num2;
+        return sum / product;
     }
     
-    public void prtRes(double res) {
+    public void printResult(double res) {
         System.out.println("Result: " + res);
     }
 }
