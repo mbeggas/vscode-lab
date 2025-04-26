@@ -3,11 +3,19 @@
  */
 package org.example;
 
+<<<<<<< HEAD
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
     @Test void appHasAGreeting() {
+=======
+import org.testng.annotations.*;
+import static org.testng.Assert.*;
+
+public class AppTest {
+    @Test public void appHasAGreeting() {
+>>>>>>> 9d19c19e109a899bd4dc6f82db5126ffc0e5aec1
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }

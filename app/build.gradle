@@ -19,14 +19,24 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation libs.guava
+<<<<<<< HEAD
+=======
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+>>>>>>> 9d19c19e109a899bd4dc6f82db5126ffc0e5aec1
 }
 
 testing {
     suites {
         // Configure the built-in test suite
         test {
+<<<<<<< HEAD
             // Use JUnit Jupiter test framework
             useJUnitJupiter('5.11.3')
+=======
+            // Use TestNG test framework
+            useTestNG('7.5.1')
+>>>>>>> 9d19c19e109a899bd4dc6f82db5126ffc0e5aec1
         }
     }
 }
