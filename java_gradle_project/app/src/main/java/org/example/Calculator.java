@@ -1,5 +1,7 @@
 package org.example;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -18,5 +20,12 @@ public class Calculator {
             throw new ArithmeticException("Cannot divide by zero");
         }
         return a / b;
+    }
+
+    public String reverseString(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("Input cannot be null");
+        }
+        return StringUtils.reverse(input);
     }
 }

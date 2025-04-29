@@ -35,4 +35,18 @@ public class CalculatorTest {
             calculator.divide(10, 0);
         });
     }
+
+    @Test
+    void testReverseString() {
+        assertEquals("cba", calculator.reverseString("abc"));
+        assertEquals("", calculator.reverseString(""));
+        assertEquals("12345", calculator.reverseString("54321"));
+    }
+
+    @Test
+    void testReverseStringNull() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.reverseString(null);
+        });
+    }
 }
