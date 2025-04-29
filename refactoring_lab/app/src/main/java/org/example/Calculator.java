@@ -1,7 +1,7 @@
 package org.example;
 
 public class Calculator {
-    public calculateRatio(double first, double second) {
+    public double calculateRatio(double first, double second) {
         double sum = first + second;
         double product = first * second;
         return sum / product;
