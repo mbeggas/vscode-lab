@@ -8,7 +8,7 @@ public class CalculatorTest {
 
     @Test
     void testCalc() {
-        double result = calculator.calc(4, 2);
+        double result = calculator.calculateRatio(4, 2);
         assertEquals(6.0 / 8.0, result);
     }
 }
