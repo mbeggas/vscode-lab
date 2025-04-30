@@ -6,22 +6,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class CalculatorTest {
 
     @Test
-    void TSAAM() {
+    void testCalculateSumProductRatio() {
         Calculator calculator = new Calculator();
-        double result = calculator.calc(2, 2);
+        double result = calculator.calculateSumProductRatio(2.0, 2.0);
         assertEquals(1.0, result, 0.0001);
     }
 
     @Test
-    void TSWZI() {
+    void testWithZeroInput() {
         Calculator calculator = new Calculator();
-        double result = calculator.calc(0, 1);
+        double result = calculator.calculateSumProductRatio(0.0, 1.0);
         assertTrue(Double.isInfinite(result));
     }
 
     @Test
-    void TSPR() {
+    void testPrintResult() {
         Calculator calculator = new Calculator();
-        calculator.prtRes(1);
+        calculator.printResult(1.0);
     }
 }
