@@ -7,8 +7,8 @@ public class CalculatorTest {
     Calculator calculator = new Calculator();
 
     @Test
-    void testCalc() {
-        double result = calculator.calc(3, 5);
-        assertEquals(8.0 / 15.0, result);
+    void testCalculate() {
+        double result = calculator.calculate(3, 5);
+        assertEquals(8.0 / 15.0, result, 0.0001); // delta لتجنب مشاكل الدقة
     }
 }
