@@ -17,8 +17,7 @@ public class OrderProcessorTest {
         Order order = new Order(customer, items);
         OrderProcessor processor = new OrderProcessor();
 
-        // هذا الاختبار فقط يشغل الدالة ويطبع، لا يتحقق من الناتج
-        // سنحتاج إلى إعادة تصميم الكود لاختبار الناتج لاحقًا إن أردنا
+
         processor.printOrderSummary(order);
     }
 }

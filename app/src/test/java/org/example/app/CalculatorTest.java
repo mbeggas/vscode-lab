@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CalculatorTest {
 
     @Test
-    public void testCalc() {
+    public void testCalculateExpression() {
         Calculator calc = new Calculator();
-        double result = calc.calc(4, 2); // (4+2)/(4*2) = 6/8 = 0.75
+        double result = calc.calculateExpression(4, 2); 
         assertEquals(0.75, result, 0.0001);
     }
 }

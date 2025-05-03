@@ -63,19 +63,29 @@ class Order {
 }
 
 public class OrderProcessor {
+
     public void printOrderSummary(Order order) {
-        // حساب السعر الإجمالي
+        double totalPrice = calculateTotalPrice(order);
+        totalPrice = applyDiscountIfApplicable(order, totalPrice);
+        printOrderDetails(order, totalPrice);
+    }
+
+    private double calculateTotalPrice(Order order) {
         double totalPrice = 0;
         for (Item item : order.getItems()) {
             totalPrice += item.getPrice() * item.getQuantity();
         }
+        return totalPrice;
+    }
 
-        // تطبيق الخصم
+    private double applyDiscountIfApplicable(Order order, double totalPrice) {
         if (order.getCustomer().isMember()) {
-            totalPrice *= 0.9; // خصم 10% للأعضاء
+            totalPrice *= 0.9; // 10% discount for members
         }
+        return totalPrice;
+    }
 
-        // طباعة الملخص
+    private void printOrderDetails(Order order, double totalPrice) {
         System.out.println("Order Summary:");
         System.out.println("Customer: " + order.getCustomer().getName());
         System.out.println("Items:");
