@@ -22,4 +22,32 @@ public class CalculatorTest {
         assertEquals(25, calculator.multiply(-5, -5));
     }
 
+    @Test
+    public void testSubtraction() {
+        assertEquals(5, calculator.subtract(10, 5));
+        assertEquals(-10, calculator.subtract(-5, 5));
+        assertEquals(0, calculator.subtract(-5, -5));
+        assertEquals(Integer.MIN_VALUE + 1, calculator.subtract(Integer.MIN_VALUE, -1));
+    }
+
+    @Test
+    public void testDivision() {
+        assertEquals(2, calculator.divide(10, 5));
+        assertEquals(-2, calculator.divide(10, -5));
+        assertEquals(0, calculator.divide(0, 5));
+        assertThrows(ArithmeticException.class, () -> calculator.divide(10, 0));
+    }
+
+    @Test
+    public void testDivisionWithDoubleResult() {
+        assertEquals(2.5, calculator.divide(5, 2), 0.0001);
+        assertEquals(-0.3333, calculator.divide(1, -3), 0.0001);
+    }
+
+    @Test
+    public void testDivisionByZero() {
+        assertEquals(2.5, calculator.divide(5, 2), 0.0001);
+        assertEquals(-0.3333, calculator.divide(1, -3), 0.0001);
+    }
+
 }

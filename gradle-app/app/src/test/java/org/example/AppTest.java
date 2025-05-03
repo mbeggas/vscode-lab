@@ -12,4 +12,9 @@ class AppTest {
         App classUnderTest = new App();
         assertNotNull(classUnderTest, "App should be creatable");
     }
+
+    @Test
+    void testReverseString() {
+        assertEquals("olleh", App.reverseString("hello"));
+    }
 }
