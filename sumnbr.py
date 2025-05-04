@@ -1,3 +1,4 @@
+#2
 def sum_positive(numbers):
     if not numbers:
         return 0

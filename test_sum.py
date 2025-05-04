@@ -1,3 +1,4 @@
+#6
 def sum_positive_numbers(numbers):
    
     if not isinstance(numbers, list):
