@@ -42,6 +42,11 @@ class Item {
     public int getQuantity() {
         return quantity;
     }
+
+    // لحساب إجمالي سعر العنصر بناءً على الكمية
+    public double getTotalPrice() {
+        return price * quantity;
+    }
 }
 
 class Order {
@@ -63,24 +68,34 @@ class Order {
 }
 
 public class OrderProcessor {
-    public void printOrderSummary(Order order) {
-        // حساب السعر الإجمالي
+
+    // دالة لحساب السعر الإجمالي مع الخصم
+    public double calculateTotalPrice(Order order) {
         double totalPrice = 0;
+
+        // إضافة سعر كل عنصر مع الكمية
         for (Item item : order.getItems()) {
-            totalPrice += item.getPrice() * item.getQuantity();
+            totalPrice += item.getTotalPrice();
         }
 
-        // تطبيق الخصم
+        // تطبيق الخصم إذا كان العميل عضوًا
         if (order.getCustomer().isMember()) {
             totalPrice *= 0.9; // خصم 10% للأعضاء
         }
+
+        return totalPrice;
+    }
+
+    // دالة لطباعة ملخص الطلب
+    public void printOrderSummary(Order order) {
+        double totalPrice = calculateTotalPrice(order);
 
         // طباعة الملخص
         System.out.println("Order Summary:");
         System.out.println("Customer: " + order.getCustomer().getName());
         System.out.println("Items:");
         for (Item item : order.getItems()) {
-            System.out.println("  - " + item.getName() + ": " + item.getQuantity() + " x $" + item.getPrice() + " = $" + (item.getQuantity() * item.getPrice()));
+            System.out.println("  - " + item.getName() + ": " + item.getQuantity() + " x $" + item.getPrice() + " = $" + item.getTotalPrice());
         }
         System.out.printf("Total Price: $%.2f%n", totalPrice);
     }
