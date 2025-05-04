@@ -1,0 +1,11 @@
+> Task :run
+Result: 0.3
+Order Summary:
+Customer: Ahmed
+Items:
+  - Book: 2 x $50.0 = $100.0
+  - Pen: 5 x $5.0 = $25.0
+Total Price: $112,50
+
+BUILD SUCCESSFUL in 6s
+2 actionable tasks: 2 executed

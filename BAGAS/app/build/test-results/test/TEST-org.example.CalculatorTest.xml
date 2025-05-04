@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.CalculatorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-04-10T18:17:47" hostname="DESKTOP-4IRJJ0B" time="0.015">
-  <properties/>
-  <testcase name="testAdd()" classname="org.example.CalculatorTest" time="0.013"/>
-  <testcase name="testMultiply()" classname="org.example.CalculatorTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
