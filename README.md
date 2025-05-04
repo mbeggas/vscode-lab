@@ -1,4 +1,4 @@
-## Related Labs
-- [Lab 01: Python Development with VS Code](docs/lab01-python-test.md)
-- [Lab 02: Building Java Applications Using Gradle](docs/gradle-lan.md)
-- [Lab 03: Refactoring Java code using VS Code](docs/refactoring-lab.md)
+echo "Test change from HassanZoebidi" >> test.txt
+git add test.txt
+git commit -m "Added test.txt for testing pull request"
+git push origin my-edits
