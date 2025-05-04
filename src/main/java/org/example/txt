@@ -1,0 +1,3 @@
+ java -jar build/libs/bagas.jar
+Sum: 15
+Product: 50
