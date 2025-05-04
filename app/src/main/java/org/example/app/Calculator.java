@@ -1,33 +1,30 @@
 package org.example.app;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Calculator {
 
-    /**
-     * Calculates the ratio of the sum and the product of two numbers.
-     *
-     * @param a first input number
-     * @param b second input number
-     * @return result of (a + b) / (a * b), or Double.NaN if product is zero
-     */
-    public double calculateRatio(double a, double b) {
-        double sum = a + b;
-        double product = a * b;
-
-        if (product == 0) {
-            System.err.println("Error: Division by zero in calculateRatio.");
-            return Double.NaN;
-        }
-
-        return sum / product;
+    public int add(int a, int b) {
+        return a + b;
     }
 
-    /**
-     * Prints the result in a formatted way.
-     *
-     * @param result the result to print
-     */
-    public void printResult(double result) {
-        System.out.println("Result: " + result);
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+
+    public int divide(int a, int b) {
+        if (b == 0) {
+            throw new IllegalArgumentException("Cannot divide by zero");
+        }
+        return a / b;
+    }
+
+    // إضافة دالة لعكس السلسلة
+    public String reverseString(String input) {
+        return StringUtils.reverse(input);
     }
 }
-
