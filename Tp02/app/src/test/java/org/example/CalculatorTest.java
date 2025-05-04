@@ -31,4 +31,9 @@ public class CalculatorTest {
         assertEquals(-2.0, calculator.divide(-10, 5));
         assertThrows(ArithmeticException.class, () -> calculator.divide(10, 0));
     }
+    @Test
+    public void testReverseString() {
+        assertEquals("gnitset", calculator.reverseString("testing"));
+        assertEquals("avaJ", calculator.reverseString("Java"));
+    }
 }
