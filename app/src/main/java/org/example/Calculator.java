@@ -1,26 +1,33 @@
 package org.example;
+
 import org.apache.commons.lang3.StringUtils;
+
 public class Calculator {
 
-    
-    public int subtract(int a, int b) {
-        return a - b;
+    public int addNumbers(int firstNumber, int secondNumber) {
+        return firstNumber + secondNumber;
     }
 
-    public int divide(int a, int b) {
-        if (b == 0) {
+    public int subtractNumbers(int firstNumber, int secondNumber) {
+        return firstNumber - secondNumber;
+    }
+
+    public int multiplyNumbers(int firstNumber, int secondNumber) {
+        return firstNumber * secondNumber;
+    }
+
+    public int divideNumbers(int dividend, int divisor) {
+        validateDivisor(divisor);
+        return dividend / divisor;
+    }
+
+    private void validateDivisor(int divisor) {
+        if (divisor == 0) {
             throw new ArithmeticException("Cannot divide by zero");
         }
-        return a / b;
-    }
-    public int add(int a, int b) {
-        return a + b;
     }
 
-    public int multiply(int a, int b) {
-        return a * b;
-    }
-    public String reverseString(String input) {
+    public String reverseText(String input) {
         return StringUtils.reverse(input);
     }
 }
