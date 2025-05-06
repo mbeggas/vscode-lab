@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.CalculatorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-04-29T12:30:20.236Z" hostname="DESKTOP-HJ488PD" time="0.045">
+  <properties/>
+  <testcase name="testMultiplication()" classname="com.example.CalculatorTest" time="0.019"/>
+  <testcase name="testAddition()" classname="com.example.CalculatorTest" time="0.001"/>
+  <testcase name="testReverse()" classname="com.example.CalculatorTest" time="0.015"/>
+  <testcase name="testDivision()" classname="com.example.CalculatorTest" time="0.003"/>
+  <testcase name="testSubtraction()" classname="com.example.CalculatorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
