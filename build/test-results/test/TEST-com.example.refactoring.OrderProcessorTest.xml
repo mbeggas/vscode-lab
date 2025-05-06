@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.refactoring.OrderProcessorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-04-29T12:15:04.201Z" hostname="DESKTOP-HJ488PD" time="0.027">
+  <properties/>
+  <testcase name="testPrintOrderSummary()" classname="com.example.refactoring.OrderProcessorTest" time="0.027"/>
+  <system-out><![CDATA[Order Summary:
+Customer: Alice
+Items:
+  - Apple: 5 x $1.0 = $5.0
+  - Banana: 10 x $0.5 = $5.0
+Total Price: $9,00
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
