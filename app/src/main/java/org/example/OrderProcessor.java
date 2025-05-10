@@ -1,25 +1,36 @@
 package org.example;
 
 public class OrderProcessor {
+
     public void printOrderSummary(Order order) {
-        // Calculate total price
+        double totalPrice = calculateTotalPrice(order);
+        printSummary(order, totalPrice);
+    }
+
+    private double calculateTotalPrice(Order order) {
         double totalPrice = 0;
         for (Item item : order.getItems()) {
             totalPrice += item.getPrice() * item.getQuantity();
         }
 
-        // Apply discount
         if (order.getCustomer().isMember()) {
             totalPrice *= 0.9; // 10% discount for members
         }
 
-        // Print summary
-        System.out.println("Order Summary:");
-        System.out.println("Customer: " + order.getCustomer().getName());
-        System.out.println("Items:");
+        return totalPrice;
+    }
+
+    private void printSummary(Order order, double totalPrice) {
+        System.out.println("the Order Summary:");
+        System.out.println("the Customer: " + order.getCustomer().getName());
+        System.out.println("the Items:");
         for (Item item : order.getItems()) {
-            System.out.println("  - " + item.getName() + ": " + item.getQuantity() + " x $" + item.getPrice() + " = $" + (item.getQuantity() * item.getPrice()));
+            System.out.printf("  - %s: %d x $%.2f = $%.2f%n",
+                    item.getName(),
+                    item.getQuantity(),
+                    item.getPrice(),
+                    item.getQuantity() * item.getPrice());
         }
-        System.out.printf("Total Price: $%.2f%n", totalPrice);
+        System.out.printf("the Total Price: $%.2f%n", totalPrice);
     }
 }
