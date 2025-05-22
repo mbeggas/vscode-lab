@@ -1,0 +1,50 @@
+# Ignore Python virtual environment
+venv/
+Venv/
+ENV/
+env/
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# VS Code settings
+.vscode/
+
+# Test and coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Pytest cache
+.pytest_cache/
+
+# Ignore build outputs
+/build/
+.gradle/
+out/
+bin/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files (e.g., IntelliJ, Eclipse, VS Code)
+.idea/
+*.iml
+.vscode/
+
+# Ignore logs and temp files
+*.log
+*.tmp
+
+# Ignore environment or local config
+.env
+
